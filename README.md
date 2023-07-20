@@ -20,7 +20,7 @@ Este repositorio contiene un programa Python que permite generar una lista de po
 
 1. Clonar el repositorio: Puedes clonar este repositorio en tu máquina local utilizando el comando `git clone`.
 
-2. Ejecutar el programa: Para utilizar el generador de nombres de usuario, simplemente ejecuta el archivo `username_generator.py`. El programa te solicitará ingresar el nombre, primer apellido, segundo apellido, año de nacimiento y año actual del objetivo.
+2. Ejecutar el programa: Para utilizar el generador de nombres de usuario, simplemente ejecuta el archivo `usergen.py`. El programa te solicitará ingresar el nombre, primer apellido, segundo apellido, año de nacimiento y año actual del objetivo.
 
 3. Resultados: Una vez proporcionada la información requerida, el generador mostrará una lista de posibles nombres de usuario relacionados con el objetivo. También tienes la opción de exportar la lista a un archivo de texto para su posterior uso.
 
