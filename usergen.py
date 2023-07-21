@@ -168,10 +168,10 @@ def main():
 
         try:
             target_name = input(VERDE + "[+] Introduce el nombre del objetivo: " + RESET)
-            first_lastname = input(VERDE + "[+]Introduce el primer apellido del objetivo: " + RESET)
-            second_lastname = input(VERDE + "[+]Introduce el segundo apellido del objetivo: " + RESET)
-            birth_year = input(VERDE + "[+]Introduce el año de nacimiento del objetivo: " + RESET)
-            current_year = input(VERDE + "[+]Introduce el año actual: " + RESET)
+            first_lastname = input(VERDE + "[+] Introduce el primer apellido del objetivo: " + RESET)
+            second_lastname = input(VERDE + "[+] Introduce el segundo apellido del objetivo: " + RESET)
+            birth_year = input(VERDE + "[+] Introduce el año de nacimiento del objetivo: " + RESET)
+            current_year = input(VERDE + "[+] Introduce el año actual: " + RESET)
 
             usernames = generate_usernames(target_name, first_lastname, second_lastname, birth_year, current_year)
 
