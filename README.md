@@ -24,7 +24,7 @@ Usergen es un programa en Python que permite generar una lista de posibles nombr
 
 2. Ejecutar el programa: Para utilizar el generador de nombres de usuario, simplemente ejecuta el archivo `usergen.py`. El programa te solicitará ingresar el nombre, primer apellido, segundo apellido, año de nacimiento y año actual del objetivo.
 
-3. Resultados: Una vez proporcionada la información requerida, el generador mostrará una lista de posibles nombres de usuario relacionados con el objetivo. También tienes la opción de exportar la lista a un archivo de texto para su posterior uso.
+3. Resultados: Una vez proporcionada la información requerida, el generador mostrará una lista de posibles nombres de usuario relacionados con el objetivo. También tienes la opción de exportar la lista a un archivo de texto para su uso con otras herramientas como hydra.
 
 ### Contribuciones
 
