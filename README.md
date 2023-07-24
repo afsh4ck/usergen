@@ -1,5 +1,7 @@
 ## Usergen
 
+![usergen](https://github.com/afsh4ck/usergen/assets/132138425/ff70fb19-2e4d-4e03-b698-79db9cc63aac)
+
 Usergen es un programa en Python que permite generar una lista de posibles nombres de usuario a partir del nombre, los apellidos y las fechas de nacimiento de una persona. La herramienta puede ser útil para la creación de listas de nombres de usuario en aplicaciones web, bases de datos o pruebas de seguridad.
 
 ### Características principales
