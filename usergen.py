@@ -1,5 +1,6 @@
-import itertools
 import os
+import datetime
+import itertools
 
 # Definir variables de color
 AMARILLO = "\033[93m"
@@ -30,180 +31,94 @@ Username List Generator                          < afsh4ck >"""
 divider = """------------------------------------------------------------
 """
 
-# Mostrar cabecera
-cabecera()
-def generate_initial_variants(name):
-    variants = []
-    first_letter = name[0].lower()
-    variants.append(first_letter)
-    return variants
+def generar_nombres_usuario(nombre, apellidos):
+    nombres_usuario = set()
+    nombre = nombre.lower().replace(" ", "")  # Eliminar espacios entre palabras del nombre
+    apellidos = apellidos.lower().replace(" ", "")  # Eliminar espacios entre palabras del apellido
 
-def generate_date_variants(name, first_lastname, second_lastname, birth_years, current_years):
-    variants = []
-    for birth_year in birth_years:
-        if birth_year not in name and birth_year not in first_lastname and birth_year not in second_lastname:
-            variants.append(name + birth_year)
-            variants.append(name + first_lastname + birth_year)
-            variants.append(name + first_lastname + second_lastname + birth_year)
-            variants.append(name + "." + birth_year)
-            variants.append(name + "." + first_lastname + "." + birth_year)
-            variants.append(name + "." + first_lastname + "." + second_lastname + "." + birth_year)
-            variants.append(name + "_" + birth_year)
-            variants.append(name + "_" + first_lastname + "_" + birth_year)
-            variants.append(name + "_" + first_lastname + "_" + second_lastname + "_" + birth_year)
-            variants.append(name + "-" + birth_year)
-            variants.append(name + "-" + first_lastname + "-" + birth_year)
-            variants.append(name + "-" + first_lastname + "-" + second_lastname + "-" + birth_year)
-            for current_year in current_years:
-                if current_year not in name and current_year not in first_lastname and current_year not in second_lastname and current_year != birth_year:
-                    variants.append(name + current_year)
-                    variants.append(name + first_lastname + current_year)
-                    variants.append(name + first_lastname + second_lastname + current_year)
-                    variants.append(name + "." + current_year)
-                    variants.append(name + "." + first_lastname + "." + current_year)
-                    variants.append(
-                        name + "." + first_lastname + "." + second_lastname + "." + current_year)
-                    variants.append(name + "_" + current_year)
-                    variants.append(name + "_" + first_lastname + "_" + current_year)
-                    variants.append(
-                        name + "_" + first_lastname + "_" + second_lastname + "_" + current_year)
-                    variants.append(name + "-" + current_year)
-                    variants.append(name + "-" + first_lastname + "-" + current_year)
-                    variants.append(
-                        name + "-" + first_lastname + "-" + second_lastname + "-" + current_year)
-    return variants
+    # Obtener el año actual
+    año_actual = datetime.datetime.now().year
 
-def check_initial_variants_availability(variants_list, name, first_lastname, second_lastname):
-    filtered_variants = []
-    for variant in variants_list:
-        if name[0].lower() in variant and first_lastname[0].lower() in variant and second_lastname[0].lower() in variant:
-            continue
-        filtered_variants.append(variant)
-    return filtered_variants
+    # Combinar nombre, apellidos y el año actual y variantes de hasta 50 años menos sin separadores
+    for num in range(51):
+        año = año_actual - num
+        nombres_usuario.add(nombre + apellidos)
+        nombres_usuario.add(nombre + str(año) + apellidos)
+        nombres_usuario.add(str(año) + nombre + apellidos)
+        nombres_usuario.add(apellidos + nombre)
+        nombres_usuario.add(apellidos + str(año) + nombre)
+        nombres_usuario.add(str(año) + apellidos + nombre)
 
-def generate_usernames(target_name, first_lastname, second_lastname, birth_year, current_year):
-    # Eliminar espacios en blanco del nombre y apellidos
-    target_name = target_name.replace(" ", "")
-    first_lastname = first_lastname.replace(" ", "")
-    second_lastname = second_lastname.replace(" ", "")
+    # Agregar nuevas variantes reemplazando el nombre por la primera letra del nombre y el apellido por la primera letra del apellido
+    primera_letra_nombre = nombre[0]
+    primera_letra_apellidos = apellidos[0]
+    nombres_usuario.add(primera_letra_nombre + apellidos)
+    nombres_usuario.add(apellidos + primera_letra_nombre)
+    nombres_usuario.add(primera_letra_nombre + apellidos + str(año))
+    nombres_usuario.add(apellidos + primera_letra_nombre + str(año))
+    nombres_usuario.add(primera_letra_nombre + str(año) + apellidos)
+    nombres_usuario.add(primera_letra_apellidos + nombre)
+    nombres_usuario.add(nombre + primera_letra_apellidos)
+    nombres_usuario.add(primera_letra_apellidos + nombre + str(año))
+    nombres_usuario.add(nombre + primera_letra_apellidos + str(año))
+    nombres_usuario.add(primera_letra_apellidos + str(año) + nombre)
 
-    # Obtener los últimos 2 dígitos del año de nacimiento
-    birth_year_2digits = birth_year[-2:]
+    # Combinar nombre y apellidos con puntos, guiones y guiones bajos, y el año actual y variantes de hasta 50 años menos
+    separadores = ['.', '-', '_']
+    for separador in separadores:
+        for num in range(51):
+            año = año_actual - num
+            nombres_usuario.add(nombre + separador + apellidos)
+            nombres_usuario.add(nombre + separador + str(año) + separador + apellidos)
+            nombres_usuario.add(str(año) + separador + nombre + separador + apellidos)
+            nombres_usuario.add(apellidos + separador + nombre + separador + str(año))
+            nombres_usuario.add(apellidos + separador + str(año) + separador + nombre)
+            nombres_usuario.add(nombre + separador + str(año) + separador + apellidos)
+            nombres_usuario.add(apellidos + separador + str(año) + separador + nombre)
+            nombres_usuario.add(primera_letra_nombre + separador + apellidos)
+            nombres_usuario.add(primera_letra_nombre + separador + str(año) + separador + apellidos)
+            nombres_usuario.add(str(año) + separador + primera_letra_nombre + separador + apellidos)
+            nombres_usuario.add(apellidos + separador + primera_letra_nombre + separador + str(año))
+            nombres_usuario.add(apellidos + separador + str(año) + separador + primera_letra_nombre)
+            nombres_usuario.add(primera_letra_apellidos + separador + nombre)
+            nombres_usuario.add(primera_letra_apellidos + separador + str(año) + separador + nombre)
+            nombres_usuario.add(str(año) + separador + primera_letra_apellidos + separador + nombre)
+            nombres_usuario.add(nombre + separador + primera_letra_apellidos + separador + str(año))
+            nombres_usuario.add(nombre + separador + str(año) + separador + primera_letra_apellidos)
+            nombres_usuario.add(primera_letra_apellidos + separador + str(año) + separador + nombre)
+            nombres_usuario.add(nombre + separador + str(año) + separador + primera_letra_apellidos)
 
-    # Obtener los últimos 2 dígitos del año actual
-    current_year_2digits = current_year[-2:]
+    return nombres_usuario
 
-    # Combinar el nombre, apellidos, año de nacimiento y año actual para obtener posibles nombres de usuario
-    names = [
-        target_name.lower(),
-        target_name[0].lower() + first_lastname[0].lower() + second_lastname[0].lower()
-    ]
+def exportar_nombres_usuario(nombres_usuario, archivo):
+    with open(archivo, "w") as file:
+        for username in nombres_usuario:
+            file.write(username + "\n")
+    print(f"\nLos nombres de usuario se han exportado exitosamente a '{archivo}'.")
 
-    first_lastnames = [
-        first_lastname.lower(),
-        first_lastname[0].lower() + second_lastname[0].lower() + target_name[0].lower()
-    ]
+while True:
+    cabecera()
 
-    second_lastnames = [
-        second_lastname.lower(),
-        second_lastname[0].lower() + first_lastname[0].lower() + target_name[0].lower()
-    ]
+    # Pedir al usuario que ingrese su nombre y apellidos
+    nombre = input(VERDE + "[+] Introduce un nombre: " + RESET)
+    apellidos = input(VERDE + "[+] Introduce apellidos o palabras clave (separados por espacios): " + RESET)
 
-    birth_years = [
-        birth_year,
-        birth_year_2digits
-    ]
+    # Generar los nombres de usuario
+    nombres_usuario = generar_nombres_usuario(nombre, apellidos)
 
-    current_years = [
-        current_year,
-        current_year_2digits
-    ]
+    # Mostrar los nombres de usuario generados
+    print("\nNombres de usuario generados:")
+    for username in nombres_usuario:
+        print(username)
 
-    usernames = []
-    for name in names:
-        for first_lastname in first_lastnames:
-            for second_lastname in second_lastnames:
-                if name != "" and first_lastname != "" and second_lastname != "":
-                    # Agregar variantes con el nombre, 1er apellido y 2º apellido
-                    usernames.append(name + first_lastname)
-                    usernames.append(name + first_lastname + second_lastname)
-                    usernames.append(name + "." + first_lastname)
-                    usernames.append(name + "." + first_lastname + "." + second_lastname)
-                    usernames.append(name + "_" + first_lastname)
-                    usernames.append(name + "_" + first_lastname + "_" + second_lastname)
-                    usernames.append(name + "-" + first_lastname)
-                    usernames.append(name + "-" + first_lastname + "-" + second_lastname)
+    # Pedir al usuario si desea exportar los nombres de usuario a un archivo de texto
+    exportar = input(VERDE + "\n[+] ¿Deseas exportar el listado a un archivo de texto? (s/n): " + RESET)
+    if exportar.lower() == "s":
+        archivo = input(VERDE + "[+] Ingresa el nombre del archivo (incluyendo la extensión .txt): " + RESET)
+        exportar_nombres_usuario(nombres_usuario, archivo)
 
-                    # Agregar variantes con la primera letra del nombre, 1er apellido y 2º apellido
-                    usernames.extend(generate_initial_variants(name) + generate_initial_variants(first_lastname) + generate_initial_variants(second_lastname))
-
-                    # Agregar nuevas variantes con los apellidos y el nombre en diferentes órdenes
-                    usernames.append(first_lastname + second_lastname + name)
-                    usernames.append(first_lastname + name)
-                    usernames.append(second_lastname + name)
-
-                    # Agregar más combinaciones según tus necesidades
-                    # Por ejemplo:
-                    usernames.append(name + second_lastname + first_lastname)
-                    usernames.append(first_lastname + birth_year)
-                    usernames.append(second_lastname + birth_year)
-                    usernames.append(first_lastname + second_lastname + birth_year)
-
-                    # Agregar variantes con el nombre, 1er apellido , 2º apellido y fechas
-                    variants_list = generate_date_variants(name, first_lastname, second_lastname, birth_years, current_years)
-
-                    # Eliminar variantes que incluyan la primera letra del nombre, 1er apellido y 2º apellido
-                    filtered_variants = check_initial_variants_availability(variants_list, name, first_lastname, second_lastname)
-
-                    usernames.extend(filtered_variants)
-
-    return usernames
-
-def main():
-    while True:
-        print(CYAN + "==================================================" + RESET)
-        print(CYAN + "[+] Bienvenido al generador de nombres de usuario." + RESET)
-        print(CYAN + "==================================================" + RESET)
-        print("\n")
-
-        try:
-            target_name = input(VERDE + "[+] Introduce el nombre del objetivo: " + RESET)
-            first_lastname = input(VERDE + "[+] Introduce el primer apellido del objetivo: " + RESET)
-            second_lastname = input(VERDE + "[+] Introduce el segundo apellido del objetivo: " + RESET)
-            birth_year = input(VERDE + "[+] Introduce el año de nacimiento del objetivo: " + RESET)
-            current_year = input(VERDE + "[+] Introduce el año actual: " + RESET)
-
-            usernames = generate_usernames(target_name, first_lastname, second_lastname, birth_year, current_year)
-
-            print(AMARILLO + "\n[*] Creando listado de posibles nombres de usuario..." + RESET)
-
-            # Eliminar duplicados de la lista de nombres de usuario
-            usernames = list(set(usernames))
-
-            print(VERDE + "\n[+] Lista de posibles nombres de usuario relacionados con el objetivo:" + RESET)
-            for username in usernames:
-                print(username)
-
-            export_choice = input(ROJO + "\n[!] ¿Deseas exportar el listado en un archivo de texto? (s/n): " + RESET).lower()
-            if export_choice == "s":
-                filename = input("[+] Introduce el nombre del archivo para guardar el listado (sin extensión): ")
-                with open(f"{filename}.txt", "w") as file:
-                    for username in usernames:
-                        file.write(f"{username}\n")
-                print(VERDE + "[+] El listado de nombres de usuario se ha guardado en el archivo {}.txt".format(filename))
-
-        except KeyboardInterrupt:
-            exit_choice = input(ROJO + "\n[!] ¿Deseas salir del programa? (s/n): " + RESET).lower()
-            if exit_choice == "s":
-                print(VERDE + "[+] Happy hacking ;)" + RESET)
-                break
-            elif exit_choice == "n":
-                continue
-            else:
-                print(ROJO + "[!] Opción inválida. Por favor, selecciona 's' para salir o 'n' para continuar." + RESET)
-
-        input("\n[*] Presiona Enter para continuar...")
-        cabecera()
-
-if __name__ == "__main__":
-    main()
+    # Pedir al usuario si desea volver a empezar el proceso
+    reiniciar = input(VERDE + "\n[+] ¿Deseas generar más nombres de usuario? (s/n): " + RESET)
+    if reiniciar.lower() != "s":
+        print(ROJO + "\n[+] Happy Hacking ;)" + RESET)
+        break
