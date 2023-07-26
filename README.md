@@ -1,6 +1,6 @@
 ## UserGen - Generador de nombres de usuario
 
-![usergen](https://github.com/afsh4ck/usergen/assets/132138425/ff70fb19-2e4d-4e03-b698-79db9cc63aac)
+![usergen](https://github.com/afsh4ck/usergen/assets/132138425/8b3fd39c-fc12-444c-80be-808355b5960d)
 
 ## Descripción:
 
