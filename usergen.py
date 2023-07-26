@@ -144,7 +144,7 @@ while True:
             exportar_nombres_usuario(nombres_usuario, archivo)
 
         # Pedir al usuario si desea volver a empezar el proceso
-        reiniciar = input(VERDE + "\n[+] ¿Deseas generar más nombres de usuario? (s/n): " + RESET)
+        reiniciar = input(AMARILLO + "\n[+] ¿Deseas generar más nombres de usuario? (s/n): " + RESET)
         if reiniciar.lower() != "s":
             print(ROJO + "\n[+] Happy Hacking ;)" + RESET)
             break
