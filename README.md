@@ -8,11 +8,11 @@ UserGen es una herramienta escrita en Python que permite generar una lista de no
 
 ## Características principales:
 
-- Generación de nombres de usuario: UserGen combina el nombre, apellidos y el año actual para generar una lista de nombres de usuario posibles.
-- Variantes con años anteriores: Además del año actual, la aplicación también crea variantes que incluyen años anteriores hasta 70 años atrás.
-- Variantes con iniciales: UserGen ofrece opciones con las iniciales del nombre y apellido en diferentes posiciones.
-- Uso de separadores: Permite combinar el nombre y apellidos con puntos, guiones y guiones bajos para generar más opciones.
-- Exportación a archivo de texto: Los nombres de usuario generados pueden ser exportados a un archivo de texto para su posterior uso.
+- **Generación de nombres de usuario**: Usergen combina el nombre, apellidos y el año actual para generar una lista de nombres de usuario posibles.
+- **Variantes con años anteriores**: Además del año actual, la aplicación también crea variantes que incluyen años anteriores hasta 70 años atrás.
+- **Variantes con iniciales**: Usergen ofrece opciones con las iniciales del nombre y apellido en diferentes posiciones.
+- **Uso de separadores**: Permite combinar el nombre y apellidos con puntos, guiones y guiones bajos para generar más opciones.
+- **Exportación a archivo de texto**: Los nombres de usuario generados pueden ser exportados a un archivo de texto para su posterior uso.
 
 ## Instrucciones de uso:
 
@@ -25,11 +25,11 @@ UserGen es una herramienta escrita en Python que permite generar una lista de no
 
 ## Dependencias:
 
-- Python 3.x: El programa requiere Python 3 o superior para ejecutarse correctamente.
+- **Python 3.x**: El programa requiere Python 3 o superior para ejecutarse correctamente.
 
 ## Autor:
 
-El programa fue desarrollado por (Tu nombre o nombre de usuario en GitHub).
+El programa fue desarrollado por *afsh4ck*.
 
 ## Licencia:
 
