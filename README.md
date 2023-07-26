@@ -1,39 +1,40 @@
-## Usergen
+## UserGen - Generador de nombres de usuario
 
 ![usergen](https://github.com/afsh4ck/usergen/assets/132138425/ff70fb19-2e4d-4e03-b698-79db9cc63aac)
 
-Usergen es un programa en Python que permite generar una lista de posibles nombres de usuario a partir del nombre, los apellidos y las fechas de nacimiento de una persona. La herramienta puede ser útil para la creación de listas de nombres de usuario en aplicaciones web, bases de datos o pruebas de seguridad.
+## Descripción:
 
-### Características principales
+UserGen es una herramienta escrita en Python que permite generar una lista de nombres de usuario basados en el nombre y apellidos (o palabras clave) proporcionados por el usuario. La aplicación utiliza diferentes combinaciones de nombres, apellidos, años y caracteres especiales, como puntos, guiones y guiones bajos, para crear una amplia variedad de posibles nombres de usuario.
 
-- **Generación de nombres de usuario personalizados:** El programa permite ingresar el nombre, primer apellido, segundo apellido, año de nacimiento y año actual del objetivo, y genera una lista de nombres de usuario posibles en base a diferentes combinaciones y variaciones.
+## Características principales:
 
-- **Variantes con iniciales y años:** El generador incluye nombres de usuario que contienen las iniciales del nombre y apellidos, así como los últimos dos dígitos del año de nacimiento y del año actual.
+- Generación de nombres de usuario: UserGen combina el nombre, apellidos y el año actual para generar una lista de nombres de usuario posibles.
+- Variantes con años anteriores: Además del año actual, la aplicación también crea variantes que incluyen años anteriores hasta 70 años atrás.
+- Variantes con iniciales: UserGen ofrece opciones con las iniciales del nombre y apellido en diferentes posiciones.
+- Uso de separadores: Permite combinar el nombre y apellidos con puntos, guiones y guiones bajos para generar más opciones.
+- Exportación a archivo de texto: Los nombres de usuario generados pueden ser exportados a un archivo de texto para su posterior uso.
 
-- **Variantes con apellidos y nombre en diferentes órdenes:** Se han añadido variantes que combinan los apellidos y el nombre en diferentes órdenes, lo que proporciona una mayor diversidad en los nombres de usuario generados.
+## Instrucciones de uso:
 
-- **Exportación de resultados:** El programa permite exportar la lista de nombres de usuario generados a un archivo de texto, lo que facilita su uso y análisis posterior.
+1. Al ejecutar el programa, se mostrará un mensaje de bienvenida con un encabezado distintivo.
+2. El usuario deberá ingresar su nombre y apellidos o palabras clave cuando se le solicite.
+3. A continuación, el programa generará una lista de posibles nombres de usuario basados en las combinaciones mencionadas anteriormente.
+4. Los resultados serán presentados ordenados por año, primero los nombres que contengan el año actual y luego los años anteriores.
+5. El usuario tendrá la opción de exportar la lista de nombres de usuario generados a un archivo de texto.
+6. Si el usuario desea generar más nombres de usuario, puede hacerlo. De lo contrario, el programa finalizará con un mensaje de despedida.
 
-### Tecnologías utilizadas
+## Dependencias:
 
-- **Python:** El programa está desarrollado en Python, un lenguaje de programación de alto nivel y ampliamente utilizado.
+- Python 3.x: El programa requiere Python 3 o superior para ejecutarse correctamente.
 
-### Cómo usar el programa
+## Autor:
 
-1. Clonar el repositorio: Puedes clonar este repositorio en tu máquina local utilizando el comando `git clone`.
+El programa fue desarrollado por (Tu nombre o nombre de usuario en GitHub).
 
-2. Ejecutar el programa: Para utilizar el generador de nombres de usuario, simplemente ejecuta el archivo `usergen.py`. El programa te solicitará ingresar el nombre, primer apellido, segundo apellido, año de nacimiento y año actual del objetivo.
+## Licencia:
 
-3. Resultados: Una vez proporcionada la información requerida, el generador mostrará una lista de posibles nombres de usuario relacionados con el objetivo. También tienes la opción de exportar la lista a un archivo de texto para su uso con otras herramientas como hydra.
+- GNU General Public License
 
-### Contribuciones
+## Contribuciones:
 
-¡Las contribuciones son bienvenidas! Si tienes alguna idea para mejorar el generador de nombres de usuario o agregar nuevas funcionalidades, no dudes en realizar un *fork* del repositorio y enviar tus *pull requests*.
-
-### Agradecimientos
-
-Este programa fue creado gracias a la colaboración de la comunidad de desarrolladores de código abierto y se inspira en diversas herramientas similares disponibles en la web. ¡Gracias a todos los que han contribuido a hacer este proyecto posible!
-
-### Nota
-
-Este programa ha sido desarrollado con fines educativos y de aprendizaje. Si deseas utilizarlo en un entorno de producción o con datos sensibles, te recomendamos revisar y ajustar el código para adaptarlo a tus necesidades específicas y garantizar la seguridad y privacidad de los datos.
+Contribuciones y mejoras al código son bienvenidas. Los usuarios pueden enviar solicitudes de extracción (pull requests) o abrir problemas (issues) en el repositorio de GitHub.
