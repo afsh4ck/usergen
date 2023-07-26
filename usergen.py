@@ -16,8 +16,11 @@ def clear_screen():
 
 def cabecera():
     clear_screen()
-    print(ROJO + title + RESET)
-    print(divider)
+    print(ROJO + title)
+    print("< afsh4ck >".center(60) + RESET)
+    print("=" * 60)
+    print("[+] Generador de nombres de usuario para pentesting".center(60))
+    print("=" * 60 + RESET)
 
 title = """
 ██╗   ██╗███████╗███████╗██████╗  ██████╗ ███████╗███╗   ██╗
@@ -25,11 +28,7 @@ title = """
 ██║   ██║███████╗█████╗  ██████╔╝██║  ███╗█████╗  ██╔██╗ ██║
 ██║   ██║╚════██║██╔══╝  ██╔══██╗██║   ██║██╔══╝  ██║╚██╗██║
 ╚██████╔╝███████║███████╗██║  ██║╚██████╔╝███████╗██║ ╚████║
- ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝                                                   
-Username List Generator                          < afsh4ck >"""
-
-divider = """------------------------------------------------------------
-"""
+ ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝"""
 
 def generar_nombres_usuario(nombre, apellidos):
     nombres_usuario = set()
@@ -56,7 +55,7 @@ def generar_nombres_usuario(nombre, apellidos):
         nombres_usuario.add(apellidos + str(año) + nombre)
         nombres_usuario.add(str(año) + apellidos + nombre)
 
-    # Agregar nuevas variantes reemplazando el nombre por la primera letra del nombre y el apellido por la primera letra del apellido
+    # Variantes reemplazando el nombre por la primera letra del nombre y el apellido por la primera letra del apellido
     primera_letra_nombre = nombre[0]
     nombres_usuario.add(primera_letra_nombre + apellidos)
     nombres_usuario.add(apellidos + primera_letra_nombre)
@@ -69,12 +68,13 @@ def generar_nombres_usuario(nombre, apellidos):
     nombres_usuario.add(nombre + primera_letra_apellidos + str(año_actual))
     nombres_usuario.add(primera_letra_apellidos + str(año_actual) + nombre)
 
-    # Combinar nombre y apellidos con puntos, guiones y guiones bajos, y el año actual y variantes de hasta 70 años menos
+    # Combinar nombre y apellidos con puntos, guiones y guiones bajos, el año actual y variantes de hasta 70 años menos
     separadores = ['.', '-', '_']
     for separador in separadores:
         for num in range(71):
             año = año_actual - num
             nombres_usuario.add(nombre + separador + apellidos)
+            nombres_usuario.add(apellidos + separador + nombre)
             nombres_usuario.add(nombre + separador + str(año) + separador + apellidos)
             nombres_usuario.add(str(año) + separador + nombre + separador + apellidos)
             nombres_usuario.add(apellidos + separador + nombre + separador + str(año))
@@ -117,31 +117,41 @@ def exportar_nombres_usuario(nombres_usuario, archivo):
     with open(archivo, "w") as file:
         for username in nombres_usuario:
             file.write(username + "\n")
-    print(f"\nLos nombres de usuario se han exportado exitosamente a '{archivo}'.")
+    print(VERDE + f"\n[+] Los nombres de usuario se han exportado exitosamente a '{archivo}'." + RESET)
 
 while True:
-    cabecera()
+    try:
+        cabecera()
 
-    # Pedir al usuario que ingrese su nombre y apellidos
-    nombre = input(VERDE + "[+] Introduce un nombre: " + RESET)
-    apellidos = input(VERDE + "[+] Introduce un apellido o palabra clave: " + RESET)
+        print()
 
-    # Generar los nombres de usuario
-    nombres_usuario = generar_nombres_usuario(nombre, apellidos)
+        # Pedir al usuario que ingrese su nombre y apellidos
+        nombre = input(VERDE + "[+] Introduce un nombre: " + RESET)
+        apellidos = input(VERDE + "[+] Introduce un apellido o palabra clave: " + RESET)
 
-    # Mostrar los nombres de usuario generados
-    print("\nNombres de usuario generados:")
-    for username in nombres_usuario:
-        print(username)
+        # Generar los nombres de usuario
+        nombres_usuario = generar_nombres_usuario(nombre, apellidos)
 
-    # Pedir al usuario si desea exportar los nombres de usuario a un archivo de texto
-    exportar = input(VERDE + "\n[+] ¿Deseas exportar el listado a un archivo de texto? (s/n): " + RESET)
-    if exportar.lower() == "s":
-        archivo = input(VERDE + "[+] Ingresa el nombre del archivo (incluyendo la extensión .txt): " + RESET)
-        exportar_nombres_usuario(nombres_usuario, archivo)
+        # Mostrar los nombres de usuario generados
+        print(AMARILLO + "\n[+] Nombres de usuario generados:" + RESET)
+        for username in nombres_usuario:
+            print(username)
 
-    # Pedir al usuario si desea volver a empezar el proceso
-    reiniciar = input(VERDE + "\n[+] ¿Deseas generar más nombres de usuario? (s/n): " + RESET)
-    if reiniciar.lower() != "s":
-        print(ROJO + "\n[+] Happy Hacking ;)" + RESET)
-        break
+        # Pedir al usuario si desea exportar los nombres de usuario a un archivo de texto
+        exportar = input(VERDE + "\n[+] ¿Deseas exportar el listado a un archivo de texto? (s/n): " + RESET)
+        if exportar.lower() == "s":
+            archivo = input(VERDE + "[+] Ingresa el nombre del archivo (incluyendo la extensión .txt): " + RESET)
+            exportar_nombres_usuario(nombres_usuario, archivo)
+
+        # Pedir al usuario si desea volver a empezar el proceso
+        reiniciar = input(VERDE + "\n[+] ¿Deseas generar más nombres de usuario? (s/n): " + RESET)
+        if reiniciar.lower() != "s":
+            print(ROJO + "\n[+] Happy Hacking ;)" + RESET)
+            break
+
+    except KeyboardInterrupt:
+        print(ROJO + "\n[+] ¿Quieres salir del programa?" + RESET)
+        respuesta = input(VERDE + "[+] (s/n): " + RESET)
+        if respuesta.lower() == "s":
+            print(ROJO + "\n[+] Happy Hacking ;)" + RESET)
+            break
