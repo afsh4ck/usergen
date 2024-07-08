@@ -27,10 +27,6 @@ UserGen es una herramienta escrita en Python que permite generar una lista de no
 
 - **Python 3.x**: El programa requiere Python 3 o superior para ejecutarse correctamente.
 
-## Autor:
-
-El programa fue desarrollado por *afsh4ck*.
-
 ## Licencia:
 
 - GNU General Public License
